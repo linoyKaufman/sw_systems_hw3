@@ -124,12 +124,71 @@
     void StrList_printAt(const StrList *Strlist, int index)
     {
         Node *temp = Strlist->_head;
-        for (int i = 0; i < index-1; i++)
+        if (index < Strlist->_size)
         {
+            for (int i = 0; i < index - 1; i++)
+            {
+                temp = temp->_next;
+            }
+            printf("%s", temp->_data);
+        }
+    }
+
+    int StrList_printLen(const StrList *Strlist)
+    {
+        Node *temp = Strlist->_head;
+        int totalnum = 0;
+
+        while (temp != NULL)
+        {
+            totalnum = totalnum + strlen(temp->_data);
             temp = temp->_next;
         }
-        printf("%s", temp->_data);
+
+        return totalnum;
+    }
+
+    int StrList_count(StrList *StrList, const char *data)
+    {
+            Node *temp = StrList->_head;
+            int count = 0;
+            while (temp != NULL)
+            {
+                if (strcmp(temp->_data, data) == 0)
+                {
+                    count++;
+                }
+                temp = temp->_next;
+            }
+            return count;
         
     }
-    121812853
-    
+
+    void StrList_remove(StrList* StrList, const char* data)
+    {
+
+       if(strcmp(StrList->_head->_data, data) == 0)
+       {
+        Node *temp = StrList->_head->_next;
+        free(StrList->_head);
+        StrList->_head = temp;
+       }
+
+        Node *temp = StrList->_head->_next;
+        Node *temp2 = StrList->_head->_next;
+        Node *prev = StrList->_head;
+
+
+            while (temp != NULL)
+            {
+                if (strcmp(temp->_data, data) == 0)
+                {
+                    temp = temp->_next;
+                    free(temp2);
+                    prev->_next = temp;
+                    temp2 = temp;
+                }
+
+            }
+    }
+
