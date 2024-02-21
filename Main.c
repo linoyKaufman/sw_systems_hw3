@@ -62,6 +62,12 @@ int main()
         }
         if (choice == 8)
         {
+            char *st;
+            printf("enter the String\n");
+            scanf("%c", st);
+            st = (char *)malloc(100 * sizeof(char)); 
+            StrList_remove(list, st);
+
         }
         if (choice == 9)
         {
