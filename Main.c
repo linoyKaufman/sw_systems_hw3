@@ -13,10 +13,17 @@ int main()
     {
         if (choice == 1)
         {
-            printf("hhhh");
         }
         if (choice == 2)
         {
+            int index;
+            printf("enter the index\n");
+            scanf("%d", &index);
+            char *st;
+            printf("enter the String\n");
+            scanf("%c", st);
+            st = (char *)malloc(100 * sizeof(char));
+            StrList_insertAt(list, st, index);
         }
         if (choice == 3)
         {
@@ -49,7 +56,7 @@ int main()
             char *st;
             printf("enter the String\n");
             scanf("%c", st);
-            st = (char *)malloc(100 * sizeof(char));// 100 is the max length of string
+            st = (char *)malloc(100 * sizeof(char)); // 100 is the max length of string
             count = StrList_count(list, st);
             printf("the string %s appears %d times\n", st, count);
         }
@@ -70,8 +77,6 @@ int main()
         }
         if (choice == 13)
         {
-            
-
         }
     }
 }
