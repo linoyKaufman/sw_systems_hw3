@@ -13,6 +13,7 @@ int main()
     {
         if (choice == 1)
         {
+            printf("hhhh");
         }
         if (choice == 2)
         {
@@ -41,6 +42,7 @@ int main()
             int len = StrList_len(list);
             printf("%d", len);
         }
+
         if (choice == 7)
         {
             int count;
@@ -68,6 +70,8 @@ int main()
         }
         if (choice == 13)
         {
+            
+
         }
     }
 }
