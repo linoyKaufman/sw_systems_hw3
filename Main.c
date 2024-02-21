@@ -13,7 +13,19 @@ int main()
     {
         if (choice == 1)
         {
-
+            int num;
+            printf("how many Strings to you want to enter?\n");
+            scanf("%d", &num);
+            for (int i = 0; i < num; i++)
+            {
+                char *st;
+                printf("enter the String\n");
+                st = getchar();
+                st = (char *)malloc(100 * sizeof(char));
+                scanf("%s", st);
+                StrList_insertLast(list, st);
+                free(st);
+            }
         }
         if (choice == 2)
         {
@@ -69,7 +81,6 @@ int main()
             scanf("%c", st);
             st = (char *)malloc(100 * sizeof(char));
             StrList_remove(list, st);
-
         }
 
         if (choice == 9)
@@ -96,17 +107,17 @@ int main()
         }
         if (choice == 13)
         {
-          int ans = StrList_isSorted(list);
-          if(ans == 1)
-          {
-            printf("the list is sorted by lexicographic order");
-          }
-          else
-          {
-             printf("the list is not sorted by lexicographic order");
-          }
+            int ans = StrList_isSorted(list);
+            if (ans == 1)
+            {
+                printf("the list is sorted by lexicographic order\n");
+            }
+            else
+            {
+                printf("the list is not sorted by lexicographic order\n");
+            }
         }
-
+        
     }
     StrList_free(list);
     return 0;
