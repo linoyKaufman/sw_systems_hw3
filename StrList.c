@@ -82,7 +82,7 @@
             StrList->_head = node1;
         }
 
-        else
+        else if (index < (StrList->_size))
         {
             for (int i = 0; i < index - 2; i++)
             {
@@ -92,6 +92,10 @@
             temp->_next = node1;
             node1->_next = temp2;
         }
+        else{
+        StrList_insertLast(StrList,data);
+        }
+        ++(StrList->_size);
     }
 
     char *StrList_firstData(const StrList *StrList)
@@ -277,7 +281,7 @@ void StrList_reverse( StrList* StrList)
     
     for (i= StrList->_head; i != NULL; i = i->_next) {
         for (j = i->_next; j != NULL; j = j->_next) {
-            if (strcmp(i->_data, j->_data) > 0) {    // Compare strings and swap if not in order
+            if (strcmp(i->_data, j->_data) > 0) {    
                 strcpy(temp, i->_data);
                 strcpy(i->_data, j->_data);
                 strcpy(j->_data, temp);
@@ -288,14 +292,18 @@ void StrList_reverse( StrList* StrList)
 
  int StrList_isSorted(StrList* StrList)
  {
-    Node* p = StrList->_head;
-    while (p != NULL && p->_next != NULL)
+    Node* temp = StrList->_head;
+    while (temp != NULL && temp->_next != NULL)
     {
-        if (p->_data != NULL && p->_next->_data != NULL && strcmp(p->_data, p->_next->_data) > 0) 
+        if (temp->_data != NULL && temp->_next->_data != NULL) 
         {
-            return 0;
+            if (strcmp(temp->_data, temp->_next->_data) > 0)
+            {
+                 return 0;
+            }
+           
         }
-        p = p->_next;
+        temp = temp->_next;
     }
     return 1;        
 }
