@@ -199,7 +199,6 @@ void StrList_removeAt(StrList *StrList, int index)
     {
         Node *temp = StrList->_head->_next;
         StrList->_head = temp;
-       
     }
     else
     {
@@ -215,4 +214,29 @@ void StrList_removeAt(StrList *StrList, int index)
         free(temp);
         (StrList->_size)--;
     }
+}
+int StrList_isEqual(const StrList *StrList1, const StrList *StrList2)
+{
+    if (StrList1->_size != StrList2->_size)
+    {
+        return 0;
+    }
+
+    Node *list1 = StrList1->_head;
+    Node *list2 = StrList1->_head;
+
+    for (int i = 0; i < StrList2->_size; i++)
+    {
+        if (strcmp(list1->_data, list2->_data) == 1)
+        {
+            return 0;
+        }
+
+        else
+        {
+            list1 = list1->_next;
+            list2 = list2->_next;
+        }
+    }
+    return 1;
 }
